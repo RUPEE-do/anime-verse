@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Hero from '../../components/Hero';
 import AnimeCard from '../../components/AnimeCard';
-import Loader, { Skeleton } from '../../components/Loader';
+import Loader from '../../components/Loader';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 import { motion } from "framer-motion";
@@ -58,11 +58,6 @@ const Home = () => {
     marginBottom: 'var(--spacing-xl)',
   };
 
-  const gridStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-    gap: '1.5rem',
-  };
 
   const linkStyle = {
     color: 'var(--accent-cyan)',
@@ -95,7 +90,7 @@ const Home = () => {
             }}
           >
             <motion.div
-              animate={{ x: ["0%", "-50%"] }}
+              animate={{ x: [0, -2600] }}
               transition={{
                 repeat: Infinity,
                 duration: 25,
@@ -104,7 +99,7 @@ const Home = () => {
               style={{
                 display: "flex",
                 gap: "20px",
-                width: "max-content",
+                width: "200%",
               }}
             >
               {[...trending.slice(1, 13), ...trending.slice(1, 13)].map(
@@ -149,7 +144,7 @@ const Home = () => {
               style={{
                 display: "flex",
                 gap: "20px",
-                width: "100%",
+                width: "max-content",
               }}
             >
               {[...upcoming.slice(0, 12), ...upcoming.slice(0, 12)].map(

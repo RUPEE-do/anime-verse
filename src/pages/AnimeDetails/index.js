@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link, data } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getAnimeDetails } from '../../services/animeService';
 import Loader from '../../components/Loader';
 import Button from '../../components/Button';
@@ -11,7 +11,6 @@ const AnimeDetails = () => {
   const { id } = useParams();
   const [anime, setAnime] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isTrailerOpen, setIsTrailerOpen] = useState(false);
   const { favorites, addFavorite, removeFavorite } = useFavorites();
 
   useEffect(() => {
@@ -88,7 +87,14 @@ const AnimeDetails = () => {
             </div>
 
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-              <Button variant="primary" onClick={() => setIsTrailerOpen(true)}>
+              <Button
+                variant="primary"
+                onClick={() => {
+                  document
+                    .querySelector("iframe")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
                 <FaPlay /> Watch Trailer
               </Button>
               <Button variant="secondary" onClick={toggleFavorite}>
